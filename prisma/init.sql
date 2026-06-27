@@ -1,0 +1,92 @@
+CREATE TABLE IF NOT EXISTS "Profile" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "slug" TEXT NOT NULL,
+  "name" TEXT NOT NULL,
+  "headline" TEXT NOT NULL,
+  "location" TEXT NOT NULL,
+  "email" TEXT NOT NULL,
+  "phone" TEXT,
+  "summary" TEXT NOT NULL,
+  "resumeUrl" TEXT,
+  "githubUrl" TEXT,
+  "linkedinUrl" TEXT,
+  "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" DATETIME NOT NULL
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS "Profile_slug_key" ON "Profile"("slug");
+
+CREATE TABLE IF NOT EXISTS "Experience" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "role" TEXT NOT NULL,
+  "company" TEXT NOT NULL,
+  "location" TEXT NOT NULL,
+  "startDate" TEXT NOT NULL,
+  "endDate" TEXT NOT NULL,
+  "highlights" TEXT NOT NULL,
+  "order" INTEGER NOT NULL DEFAULT 0,
+  "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" DATETIME NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "Project" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "title" TEXT NOT NULL,
+  "subtitle" TEXT,
+  "description" TEXT NOT NULL,
+  "technologies" TEXT NOT NULL,
+  "metrics" TEXT NOT NULL,
+  "featured" BOOLEAN NOT NULL DEFAULT false,
+  "order" INTEGER NOT NULL DEFAULT 0,
+  "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" DATETIME NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "SkillGroup" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "name" TEXT NOT NULL,
+  "items" TEXT NOT NULL,
+  "order" INTEGER NOT NULL DEFAULT 0,
+  "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" DATETIME NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "Education" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "institution" TEXT NOT NULL,
+  "credential" TEXT NOT NULL,
+  "location" TEXT NOT NULL,
+  "startDate" TEXT NOT NULL,
+  "endDate" TEXT NOT NULL,
+  "gpa" TEXT,
+  "order" INTEGER NOT NULL DEFAULT 0,
+  "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" DATETIME NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "Publication" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "title" TEXT NOT NULL,
+  "identifier" TEXT,
+  "publishedAt" TEXT NOT NULL,
+  "summary" TEXT NOT NULL,
+  "order" INTEGER NOT NULL DEFAULT 0,
+  "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" DATETIME NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "ContactMessage" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "name" TEXT NOT NULL,
+  "email" TEXT NOT NULL,
+  "message" TEXT NOT NULL,
+  "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "readAt" DATETIME
+);
+
+CREATE TABLE IF NOT EXISTS "SiteText" (
+  "key" TEXT NOT NULL PRIMARY KEY,
+  "value" TEXT NOT NULL,
+  "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" DATETIME NOT NULL
+);

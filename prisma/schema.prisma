@@ -1,0 +1,99 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Profile {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  name      String
+  headline  String
+  location  String
+  email     String
+  phone     String?
+  summary   String
+  resumeUrl String?
+  githubUrl String?
+  linkedinUrl String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Experience {
+  id          String   @id @default(cuid())
+  role        String
+  company     String
+  location    String
+  startDate   String
+  endDate     String
+  highlights  String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Project {
+  id           String   @id @default(cuid())
+  title        String
+  subtitle     String?
+  description  String
+  technologies String
+  metrics      String
+  featured     Boolean  @default(false)
+  order        Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model SkillGroup {
+  id        String   @id @default(cuid())
+  name      String
+  items     String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Education {
+  id          String   @id @default(cuid())
+  institution String
+  credential  String
+  location    String
+  startDate   String
+  endDate     String
+  gpa         String?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Publication {
+  id          String   @id @default(cuid())
+  title       String
+  identifier  String?
+  publishedAt String
+  summary     String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+  readAt    DateTime?
+}
+
+model SiteText {
+  key       String   @id
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
