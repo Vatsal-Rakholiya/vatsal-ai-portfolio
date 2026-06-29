@@ -92,13 +92,13 @@ function NeuralObject() {
 
 export function NeuralCore() {
   return (
-    <div className="relative h-[420px] min-h-[360px] w-full overflow-visible md:h-[620px]" data-testid="neural-core">
-      <div aria-hidden className="pointer-events-none absolute inset-[-14%] rounded-full bg-[radial-gradient(circle,rgba(71,245,180,0.08),transparent_62%)] blur-2xl" />
-      <Canvas camera={{ position: [0, 0, 5.8], fov: 46 }} dpr={[1, 1.6]} gl={{ alpha: true, antialias: true }} className="neural-core-canvas">
+    <div className="relative h-[290px] min-h-[260px] w-full overflow-visible sm:h-[360px] md:h-[500px] lg:h-[620px]" data-testid="neural-core">
+      <div aria-hidden className="pointer-events-none absolute inset-[-10%] rounded-full bg-[radial-gradient(circle,rgba(71,245,180,0.055),transparent_64%)] blur-2xl" />
+      <Canvas camera={{ position: [0, 0, 6.35], fov: 42 }} dpr={[1, 1.6]} gl={{ alpha: true, antialias: true }} className="neural-core-canvas">
         <ambientLight intensity={0.75} />
         <pointLight position={[4, 2, 5]} color="#47f5b4" intensity={24} />
         <pointLight position={[-4, -3, 3]} color="#ff7b6e" intensity={9} />
-        <Stars radius={80} depth={42} count={1300} factor={3.4} saturation={0.2} fade speed={0.35} />
+        <Stars radius={80} depth={42} count={950} factor={2.8} saturation={0.2} fade speed={0.35} />
         <NeuralObject />
         <OrbitControls enableZoom={false} enablePan={false} rotateSpeed={0.5} autoRotate autoRotateSpeed={0.45} />
       </Canvas>

@@ -6,7 +6,6 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { AnimatedGroup } from "@/components/animated-group";
 import { ContactForm } from "@/components/contact-form";
-import { ExperienceStructure } from "@/components/experience-structure";
 import { MotionFooter } from "@/components/motion-footer";
 import { ParticleField } from "@/components/particle-field";
 import { ReactiveCursor } from "@/components/reactive-cursor";
@@ -81,6 +80,15 @@ export function PortfolioExperience({ portfolio }: { portfolio: Portfolio }) {
                   <Mail size={17} />
                   {text.heroSecondaryCta}
                 </a>
+                <a
+                  href="https://www.linkedin.com/in/vatsalrakholiya/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-12 items-center gap-2 rounded-md border border-mint/24 bg-white/[0.025] px-5 text-sm font-semibold text-white transition hover:border-mint/80 hover:bg-mint/10 hover:text-mint"
+                >
+                  <Linkedin size={17} />
+                  LinkedIn
+                </a>
               </div>
             </AnimatedGroup>
 
@@ -109,8 +117,8 @@ export function PortfolioExperience({ portfolio }: { portfolio: Portfolio }) {
             </motion.div>
           </div>
 
-          <div className="relative min-h-[420px] overflow-visible lg:min-h-[680px]">
-            <div className="absolute inset-x-8 top-1/2 h-48 -translate-y-1/2 rounded-full bg-mint/8 blur-3xl" />
+          <div className="relative mx-auto min-h-[290px] w-full max-w-[22rem] overflow-visible sm:max-w-[28rem] md:min-h-[440px] md:max-w-[36rem] lg:min-h-[620px] lg:max-w-none">
+            <div className="absolute inset-x-8 top-1/2 h-40 -translate-y-1/2 rounded-full bg-mint/7 blur-3xl md:h-48" />
             <NeuralCore />
           </div>
         </div>
@@ -274,9 +282,6 @@ export function PortfolioExperience({ portfolio }: { portfolio: Portfolio }) {
         <div>
           <p className="font-mono text-xs uppercase tracking-[0.28em] text-mint">{text.timelineKicker}</p>
           <h2 className="mt-3 text-4xl font-semibold text-white">{timelineTitle}</h2>
-          <div className="mt-8">
-            <ExperienceStructure />
-          </div>
         </div>
         <div className="space-y-5">
           {portfolio.experiences.map((experience, index) => (

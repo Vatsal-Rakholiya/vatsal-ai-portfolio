@@ -306,14 +306,12 @@ textarea {
 
 @keyframes section-rise {
   from {
-    opacity: 0.64;
+    opacity: 0.88;
     transform: translateY(34px);
-    filter: blur(8px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
   }
 }
 

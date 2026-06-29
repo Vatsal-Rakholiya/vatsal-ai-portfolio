@@ -37,6 +37,7 @@ export const seedPortfolio: Portfolio = {
     location: "Toronto, Ontario, Canada",
     email: "rcm.vatsal@gmail.com",
     phone: "+1 (437) 428-9973",
+    linkedinUrl: "https://www.linkedin.com/in/vatsalrakholiya/",
     summary:
       "Data scientist with production experience across Python, SQL, machine learning, NLP, forecasting, dashboards, and applied generative AI. I turn noisy business data into decision systems: lead scoring, support automation, market intelligence, document search, and visual inspection workflows."
   },
