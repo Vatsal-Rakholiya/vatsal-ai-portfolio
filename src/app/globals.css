@@ -29,11 +29,11 @@ body {
 }
 
 @media (pointer: fine) {
-  body,
-  a,
-  button,
-  input,
-  textarea {
+  .portfolio-shell,
+  .portfolio-shell a,
+  .portfolio-shell button,
+  .portfolio-shell input,
+  .portfolio-shell textarea {
     cursor: none;
   }
 }

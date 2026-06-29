@@ -38,7 +38,7 @@ export function PortfolioExperience({ portfolio }: { portfolio: Portfolio }) {
   const timelineTitle = text.timelineTitle.replace(/\beducation\b/g, "Education");
 
   return (
-    <main className="relative z-10 overflow-hidden">
+    <main className="portfolio-shell relative z-10 overflow-hidden">
       <StartReveal />
       <ParticleField />
       <ScrollSerenityEffects />
