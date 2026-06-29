@@ -18,7 +18,7 @@ const portfolioSchema = z.object({
     githubUrl: z.string().optional().nullable(),
     linkedinUrl: z.string().optional().nullable()
   }),
-  siteText: z.record(z.string().min(1)),
+  siteText: z.record(z.string()),
   experiences: z.array(
     z.object({
       role: z.string().min(1),

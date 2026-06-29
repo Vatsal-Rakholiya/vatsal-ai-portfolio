@@ -29,6 +29,7 @@ export function AdminEditor({
   const [portfolio, setPortfolio] = useState(initialPortfolio);
   const [activeTab, setActiveTab] = useState<TabKey>("profile");
   const [status, setStatus] = useState<"idle" | "saving" | "saved" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
   const [jsonDrafts, setJsonDrafts] = useState(() => ({
     projects: JSON.stringify(initialPortfolio.projects, null, 2),
     experience: JSON.stringify(initialPortfolio.experiences, null, 2),
@@ -79,13 +80,16 @@ export function AdminEditor({
         publications: tab === "publications" ? parsed : current.publications
       }));
       setStatus("idle");
+      setErrorMessage("");
     } catch {
       setStatus("error");
+      setErrorMessage("The JSON in this tab is not valid. Fix the syntax, then click Apply JSON again.");
     }
   }
 
   async function savePortfolio() {
     setStatus("saving");
+    setErrorMessage("");
     const response = await fetch("/api/admin/portfolio", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -95,6 +99,14 @@ export function AdminEditor({
     setStatus(response.ok ? "saved" : "error");
     if (response.ok) {
       router.refresh();
+    } else {
+      const body = await response.json().catch(() => null);
+      const fieldErrors = body?.issues?.fieldErrors
+        ? Object.entries(body.issues.fieldErrors)
+            .flatMap(([field, messages]) => (Array.isArray(messages) ? messages.map((message) => `${field}: ${message}`) : []))
+            .join(" ")
+        : "";
+      setErrorMessage(fieldErrors || body?.error || "Could not apply changes. Check required fields.");
     }
   }
 
@@ -131,7 +143,11 @@ export function AdminEditor({
         </header>
 
         {status === "saved" && <p className="mb-5 border border-mint/40 bg-mint/10 p-3 text-sm text-mint">Portfolio saved to the database.</p>}
-        {status === "error" && <p className="mb-5 border border-coral/40 bg-coral/10 p-3 text-sm text-coral">Could not apply changes. Check JSON format and required fields.</p>}
+        {status === "error" && (
+          <p className="mb-5 border border-coral/40 bg-coral/10 p-3 text-sm text-coral">
+            {errorMessage || "Could not apply changes. Check JSON format and required fields."}
+          </p>
+        )}
 
         <section className="mb-6 grid gap-4 md:grid-cols-4">
           <div className="glass p-4">
